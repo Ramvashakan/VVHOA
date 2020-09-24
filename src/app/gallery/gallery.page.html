@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>gallery</ion-title>
+    <ion-title> VVHOA's Gallery</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content scrollY="true">
+
+
+  <ion-list *ngFor="let a of imageList; let i = index ">
+
+    <ion-thumbnail slot="start">
+
+      <ion-icon (click)="image_options(i)" class="image-option" name="ellipsis-vertical-outline"></ion-icon>
+
+      <img (click)="fullImage(i)" *ngIf="a != null" class="image" src="{{a.images}}">
+
+    </ion-thumbnail>
+
+
+
+  </ion-list>
+
+
+  <ion-fab id="addImage" (click)="post()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>

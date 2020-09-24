@@ -9,6 +9,7 @@ export class UserDetailsService {
   userUid: any;
   current_UserName: any;
   proPicture: any;
+  imageList = [];
 
   constructor(private AF: AngularFireAuth, private AFS: AngularFirestore) {
     this.getID().then((result) => {
@@ -33,37 +34,45 @@ export class UserDetailsService {
         .doc(this.userUid)
         .get()
         .subscribe((result) => {
-          if(result != null)  
-            resolve(result.data().Name)
+          if (result != null) resolve(result.data().Name);
         });
     });
   }
 
-
-  getUserEmail():Promise<any>{
-
-    return new Promise((resolve,reject)=>{
-
-      this.AF.authState.subscribe((user)=>{
-        if(user){
-          resolve(user.email)
-        }
-      })
-
-    })
-  }
-
-
-  getPropic(): Promise<any> {
+  getUserEmail(): Promise<any> {
     return new Promise((resolve, reject) => {
-      this.AFS.collection('propicture/')
-        .doc(this.userUid)
-        .get().subscribe((snapshot)=>{
-          let a = snapshot.data().ProfilePicture;
-          resolve(a);
-        })
-
+      this.AF.authState.subscribe((user) => {
+        if (user) {
+          resolve(user.email);
+        }
+      });
     });
   }
 
+  getPropic(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.AFS.collection("propicture/")
+        .doc(this.userUid)
+        .get()
+        .subscribe((snapshot) => {
+          let a = snapshot.data().ProfilePicture;
+          resolve(a);
+        });
+    });
+  }
+
+  getFireDate(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.AFS.collection("gallery")
+        .ref.orderBy("created", "asc")
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            this.imageList.push(doc.data());
+          });
+
+          resolve(this.imageList);
+        });
+    });
+  }
 }

@@ -9,6 +9,8 @@ import {
 import { Router } from "@angular/router";
 import { AngularFirestore } from "@angular/fire/firestore";
 
+import * as firebase from 'firebase'
+
 @Component({
   selector: "app-enquiry",
   templateUrl: "./enquiry.page.html",
@@ -66,8 +68,10 @@ export class EnquiryPage implements OnInit {
 
     if (this.message != null) {
       this.AFS.collection("message")
-        .doc(this.userUid)
-        .set({Message:this.message})
+        .add({Message:this.message,
+          userId:this.userUid,
+          created:firebase.firestore.FieldValue.serverTimestamp()
+        })
         .then(() => {
           alrt1.present();
           this.message = null;

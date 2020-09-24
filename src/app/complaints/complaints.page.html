@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>complaints</ion-title>
+    <ion-icon slot="start" (click)="goBack()" class="back" name="arrow-back"></ion-icon>
+
+    <ion-title>All Complaints</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-list *ngFor="let complaint of allComplaints">
+
+    <ion-item>
+
+      {{complaint.Message}}
+    </ion-item>
+
+  </ion-list>
 
 </ion-content>
