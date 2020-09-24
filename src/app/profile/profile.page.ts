@@ -9,6 +9,7 @@ import {
 import { UserDetailsService } from "../services/user-details.service";
 import { CallNumber } from "@ionic-native/call-number/ngx";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { ImagePickerOptions, ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @Component({
   selector: "app-profile",
@@ -65,6 +66,7 @@ export class ProfilePage implements OnInit {
     private AF: AngularFireAuth,
     private AFS: AngularFirestore,
     private router: Router,
+    private impicker:ImagePicker,
     private UserDetails: UserDetailsService,
     private loading: LoadingController,
     private NavCtrl: NavController,
@@ -123,6 +125,54 @@ export class ProfilePage implements OnInit {
         });
     });
   }
+
+
+
+  async propic() {
+    let load = await this.loading.create({
+      message: "Updating Your Profile Pic...",
+      spinner: "circles",
+      translucent: true,
+      duration: 2000,
+    });
+
+    let alrt = await this.alertCtrl.create({
+      header: "Added Profile Picture Successfully",
+      buttons: ["OK"],
+      backdropDismiss: false,
+      translucent: true,
+    });
+
+    const option: ImagePickerOptions = {
+      height: 200,
+      width: 200,
+      maximumImagesCount: 1,
+      outputType: 1,
+      quality: 100,
+    };
+
+    this.impicker.requestReadPermission().then(() => {
+      this.impicker.hasReadPermission().then((val) => {
+        if (val) {
+          this.impicker.getPictures(option).then((result) => {
+            if (result != null && result.length == 1) {
+              load.present();
+              this.proPicture = "data:image/jpeg;base64,"+ result;
+
+              this.AFS.collection("propicture").doc(this.userUid).set({
+                ProfilePicture: this.proPicture,
+              });
+            }
+          });
+          load.onDidDismiss().then(() => {
+            alrt.present();
+          });
+        }
+      });
+    });
+  }
+
+
 
   dark() {
     this.darkMode != this.darkMode;
