@@ -1,0 +1,29 @@
+
+<ion-content>
+  <ion-item lines="none">
+    <ion-label class="heading1">Enter Your details</ion-label>
+  </ion-item>
+    <ion-item class="inpt_number">
+      <ion-input placeholder="Enter the Full Name" type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+  
+    <ion-item class="inpt_number">
+      <ion-input type="email" placeholder="{{email}}" readonly [(ngModel)]="email" ></ion-input>
+    </ion-item>
+  
+    <ion-item class="inpt_number">
+      <ion-input placeholder="Enter the phone number" type="tel" [(ngModel)]="phNumber" ></ion-input>
+    </ion-item>
+  
+    <ion-item class="inpt_number">
+      <ion-input placeholder="Enter the Door number" type="text" [(ngModel)]="drNumber" ></ion-input>
+    </ion-item>
+  
+    <ion-item lines="none">
+  
+      <button ion-button class="login" (click)="save()"> Save Details</button>
+    
+    </ion-item>
+  
+  </ion-content>
+  

@@ -1,5 +1,7 @@
 {
   "name": "VVHOA",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

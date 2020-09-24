@@ -1,0 +1,45 @@
+
+ion-content{
+
+    --ion-background-color: #f4c613 ;
+}
+
+
+ion-toolbar{
+
+    --background:#f4c613;
+    color: #ffffff;
+    
+
+}
+
+.info{
+
+    padding: 10px 10px 10px 10px;
+    margin-top: 20px !important;
+    border: thin solid gray;
+}
+
+ion-textarea{
+
+    border: thin solid white;
+    margin-top: 40px;
+    height: 200px;
+    --placeholder-color:black;
+}
+
+.submit{
+
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 35%;
+    font-size: 20px;
+}
+
+#menu{
+
+    margin-right: 10px;
+    font-size: 30px;
+    visibility: hidden;
+}
+

@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>VVHOA</ion-title>
+
+    <ion-button color="secondary" slot="end" class="logout" (click)="logout()"> Logout </ion-button>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-item class="user" lines="none">
+
+    <ion-avatar class="avatar" slot="start">
+
+      <img *ngIf="proPicture == null" class="picture" src="../../assets/avatar.svg">
+
+      <img class="picture" src="{{proPicture}}">
+
+    </ion-avatar>
+
+    <ion-button class="propic" slot="end" (click)="propic()">select Picture</ion-button>
+
+  </ion-item>
+
+  <ion-item class="darkmode" lines="none">
+
+    <ion-icon slot="start" name="moon"></ion-icon>
+    <ion-label class="dark"><strong>Dark mode </strong></ion-label>
+
+    <ion-toggle [(ngModel)]="darkMode" (ionChange)="dark()" color="primary"></ion-toggle>
+
+  </ion-item>
+
+
+  <ion-item class="payment">
+
+    <h1 class="paymenttext"><strong>Payment Links</strong></h1>
+
+    <ion-icon name="arrow-forward-outline" size="large" (click)="payment()" slot="end"></ion-icon>
+
+  </ion-item>
+
+
+  <ion-item id="alluser" class="payment">
+
+    <h2 class="paymenttext"><strong>View All Details</strong></h2>
+
+    <ion-icon name="arrow-forward-outline" size="large" (click)="allUser()" slot="end"></ion-icon>
+
+  </ion-item>
+
+
+  <ion-list>
+
+    <ion-item>
+
+      <h1 class="heading"><strong> Details </strong></h1>
+
+    </ion-item>
+
+    <ion-item lines="none" class="list_item"><strong> Name: </strong> <span class="detail"> {{allDetails.Name}} </span>
+    </ion-item>
+    <ion-item lines="none" class="list_item"><strong>Email:</strong> <span class="detail">{{allDetails.Email}}</span>
+    </ion-item>
+    <ion-item lines="none" class="list_item"><strong>Door No:</strong> <span
+        class="detail">{{allDetails.DoorNumber}}</span></ion-item>
+    <ion-item class="list_item"><strong>Phone Number:</strong> <span class="detail">{{allDetails.PhoneNumber}}</span>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-item>
+
+    <h1 class="heading"> <strong> Important Contacts </strong> </h1>
+
+  </ion-item>
+
+
+  <ion-list *ngFor="let item of callDetails; let i= index">
+
+    <ion-item class="list_item"><strong> {{item.name}} : </strong> <span class="detail"> {{item.number}} </span>
+      <ion-icon name="call" class="call-icon" (click)="callUser(i)" slot="end"></ion-icon>
+    </ion-item>
+
+  </ion-list>
+
+
+  <h1 class="heading"><strong>Admin Details </strong></h1>
+
+  <ion-list>
+
+    <ion-item class="list_item"><strong> M.Vaira Mani: </strong> <span class="detail"> 9994951999 </span>
+      <ion-icon name="call" class="call-icon" (click)="callUser1(9994951999)" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item class="list_item"><strong> G.Ashok Kumar: </strong> <span class="detail"> 9842171327 </span>
+      <ion-icon name="call" class="call-icon" (click)="callUser1(9842171327)" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item class="list_item"><strong> P.Ponkarthikeyan: </strong> <span class="detail"> 8110973199 </span>
+      <ion-icon name="call" class="call-icon" (click)="callUser1(8110973199)" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+
+</ion-content>

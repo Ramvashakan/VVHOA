@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-icon slot="start" (click)="goBack()" class="back" name="arrow-back"></ion-icon>
+    <ion-title>Post</ion-title>
+    <ion-button color="secondary" slot="end" class="logout" (click)="postNews()"> Post It </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-textarea rows="6" cols="20" auto-grow="true" wrap="soft" [(ngModel)]="discription"
+    placeholder="Enter the description">
+
+  </ion-textarea>
+
+  <ion-button class="select" color="primary" (click)="selectImage()"> Select Image </ion-button>
+
+  <ion-item lines="none">
+    <img *ngIf="postImage != null" src="{{postImage}}">
+  </ion-item>
+
+
+
+</ion-content>

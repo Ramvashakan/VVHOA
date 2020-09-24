@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Register Complaint</ion-title>
+    <ion-icon id="menu" slot="end" (click)="showOption()" name="ellipsis-vertical-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="enquiry">
+
+  <ion-item text-wrap class="info" lines="none">
+
+    <p>If there is any problem near your house are in our Avenue you can inform below.
+      The action will be taken as soon as posible. <br><br>BY-<strong> VVHO</strong> </p>
+
+  </ion-item>
+
+  <ion-textarea class="complaint" rows="9" cols="20" [(ngModel)]="message" placeholder="Enter your Complaint"> </ion-textarea>
+
+  <ion-button (click)="submit()" class="submit">Submit</ion-button>
+
+</ion-content>

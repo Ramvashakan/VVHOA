@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar mode='ios'>
+    <ion-title>Daily News</ion-title>
+    <ion-icon slot="end" (click)="notification()" name="add-circle-outline"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content id="newsfeed">
+
+  <ion-refresher slot="fixed" (ionRefresh)="getUpdateList($event)" pullMin="100" pullMax="200">
+
+
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull To refresh" refreshingSpinner="crescent"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+
+  </ion-refresher>
+
+
+  <ion-list *ngFor="let news of trail; let i=index">
+
+    <ion-card mode="ios">
+
+      <ion-card-header class="card_head">
+
+        <ion-item class="heading" lines="none">
+
+          <ion-icon (click)="image_options(i)" slot="end" class="image-option" name="ellipsis-vertical-outline">
+          </ion-icon>
+
+          <ion-avatar class="avatar" slot="start">
+            <ion-img *ngIf="news.propic == '' || news.propic == null" class="picture" src="../../assets/avatar.svg">
+            </ion-img>
+
+            <img src="{{news.propic}}">
+          </ion-avatar>
+
+          <ion-label class="name"> {{news.userName}} </ion-label>
+
+        </ion-item>
+
+      </ion-card-header>
+
+
+      <ion-item *ngIf="news.comment != '' || news.urls != ''" lines="none">
+        <img class="image" [src]="news.url">
+      </ion-item>
+
+      <ion-card-content>
+
+        <p class="comment">{{news.comment}}</p>
+
+      </ion-card-content>
+
+    </ion-card>
+
+  </ion-list>
+
+  <ion-fab id="addFeed" (click)="post()" horizontal="end" vertical="bottom" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,93 @@
+ion-content {
+
+    --ion-background-color: #f4c613;
+    scroll-behavior: smooth !important;
+}
+
+
+ion-toolbar {
+
+    --background: #f4c613;
+    color: #ffffff;
+
+
+}
+
+ion-title {
+
+    font-size: 25px;
+    text-align: left;
+
+}
+
+.card_head {
+
+    font-size: 20px;
+    font-weight: 400 !important;
+    font-style: oblique;
+    padding: 10px 10px;
+}
+
+ion-card {
+
+    --ion-background-color: #fdf9f9;
+    position: relative;
+    height: fit-content;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 2px 2px rgb(146, 142, 142);
+
+}
+
+.image {
+
+    text-align: center !important;
+    min-width: 300px;
+    max-height: 300px;
+    width: max-content !important;
+    background-size: auto;
+
+}
+
+ion-card-content {
+    margin-top: 10px;
+    border: solid 2px black;
+
+}
+
+.heading {
+
+    border-bottom: solid thin grey;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+
+}
+
+.avatar {
+
+
+    width: 60px;
+    height: 60px;
+
+}
+
+.name {
+    font-size: 20px;
+}
+
+#reload {
+    font-size: 24px;
+    margin-right: 10px;
+    font-weight: 400;
+}
+
+.comment {
+
+    padding-top: 20px;
+    color: #000000;
+
+}
+
+#addFeed {
+    visibility: hidden;
+}

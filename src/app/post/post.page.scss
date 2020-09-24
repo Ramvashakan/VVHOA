@@ -1,0 +1,31 @@
+ion-content {
+
+    --ion-background-color: #f4c613;
+}
+
+ion-toolbar {
+    --background: #f4c613;
+    color: #ffffff;
+}
+
+ion-textarea {
+
+    border: solid 2px white;
+    color: #000000;
+    --placeholder-color: #000000;
+
+}
+
+.select {
+
+    margin-top: 20px;
+
+}
+
+.back {
+
+    color: #000000;
+    font-size: 30px;
+    padding-left: 20px;
+
+}
