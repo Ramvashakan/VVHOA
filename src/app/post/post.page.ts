@@ -10,6 +10,7 @@ import { UserDetailsService } from "../services/user-details.service";
 import { Router } from "@angular/router";
 
 import * as firebase from "firebase";
+import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker/ngx';
 
 @Component({
   selector: "app-post",
@@ -30,6 +31,7 @@ export class PostPage implements OnInit {
     private AFS: AngularFirestore,
     private userDetails: UserDetailsService,
     private Router: Router,
+    private imagep:ImagePicker,
     private NavCtrl: NavController,
     private alrtCtrl: AlertController,
     private Loading: LoadingController
@@ -63,18 +65,18 @@ export class PostPage implements OnInit {
 
   selectImage() {
     this.platform.ready().then(() => {
-      const option = {
+      const option:ImagePickerOptions = {
         height: 500,
         width: 500,
         maximumImagesCount: 1,
         outputType: 1,
       };
 
-      // this.imagep.getPictures(option).then((result) => {
-      //   if (result != null && result.length == 1) {
-      //     this.postImage = "data:image/jpeg;base64," + result;
-      //   }
-      // });
+      this.imagep.getPictures(option).then((result) => {
+        if (result != null && result.length == 1) {
+          this.postImage = "data:image/jpeg;base64," + result;
+        }
+      });
     });
   }
 

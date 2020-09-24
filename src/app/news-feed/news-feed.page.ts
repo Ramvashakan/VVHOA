@@ -68,18 +68,16 @@ export class NewsFeedPage implements OnInit {
 
   getArray(): Promise<any> {
     return new Promise((resolve, reject) => {
-
-      this.AFS.collection("newsFeed").ref.orderBy("created","asc")
-        .get().then
-        ((querySnapshot) => {
+      this.AFS.collection("newsFeed")
+        .ref.orderBy("created", "asc")
+        .get()
+        .then((querySnapshot) => {
           let arr = [];
           querySnapshot.forEach((doc) => {
-            console.log(doc.data())
-            if(doc.data() != null){
-              
+            console.log(doc.data());
+            if (doc.data() != null) {
               arr.push(doc.data());
             }
-            
           });
           resolve(arr);
         });
@@ -93,7 +91,7 @@ export class NewsFeedPage implements OnInit {
   getUpdateList(ev) {
     this.getArray()
       .then((result) => {
-        console.log(result)
+        console.log(result);
         this.trail = [];
         console.log(result);
         if (result != null) {

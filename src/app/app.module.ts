@@ -21,6 +21,7 @@ import {
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx'
 import {CallNumber} from '@ionic-native/call-number/ngx';
 
+import {ImagePicker} from '@ionic-native/image-picker/ngx';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import {CallNumber} from '@ionic-native/call-number/ngx';
     StatusBar,
     SplashScreen,CallNumber,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    AngularFirestore,
+    AngularFirestore,ImagePicker,
     AngularFireAuth,
     InAppBrowser,
 
